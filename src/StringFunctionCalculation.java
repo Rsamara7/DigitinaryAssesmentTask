@@ -9,11 +9,7 @@ public class StringFunctionCalculation {
             System.out.println("f(s) = length of s × number of times s occurs in t " + "where t is the original string and s is the sub string ");
             String originalString = scanner.nextLine();
             scanner.close();
-            if (originalString.isEmpty()) {
-                System.out.println("please provide a valid string ");
-            } else {
                 System.out.println("maximum value of among all the substrings of the given string " + calculateMaxFunctionValue(originalString));
-            }
         } catch (Exception e){
             System.err.println("an exception has occurred " + e.getMessage());
         }
@@ -32,6 +28,9 @@ public class StringFunctionCalculation {
     }
 
     public static int calculateMaxFunctionValue(String originalString) {
+        if(originalString.isEmpty()){
+            throw new IllegalArgumentException("please provide a valid string ");
+        }
         int maxFunctionValue = 0; //variable to hold the max
 
         for (int i = 0; i < originalString.length(); i++) { //outer loop to indicate original string (start of substring)
